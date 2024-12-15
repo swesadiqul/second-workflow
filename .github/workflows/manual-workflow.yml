@@ -1,13 +1,13 @@
-name: Python CI
+name: Manual Workflow
 
 on:
     workflow_dispatch:
 
 jobs:
-  second-workflow:
+  manual-workflow:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         run: |
          echo "Hello, Python CI"
-         echo "I'm running a second workflow"
+         echo "I'm running a manual workflow"
