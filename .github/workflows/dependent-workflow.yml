@@ -1,0 +1,31 @@
+name: Dependent Workflow
+
+
+on: 
+    workflow_dispatch:
+
+
+jobs:
+    First-Job:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: First-Step
+              run: echo "This is the first step"
+
+    Second-Job:
+        needs: First-Job
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Second-Step
+              run: echo "This is the second step"
+
+
+    Third-Job:
+        needs: Second-Job
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Third-Step
+              run: echo "This is the third step"

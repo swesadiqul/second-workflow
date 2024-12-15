@@ -1,8 +1,9 @@
 name: Cronjob Workflow
 
 on:
-    schedule:
-        - cron: '*/5 * * * *' # Run the cron job on every 5 minutes
+    # schedule:
+    #     - cron: '*/5 * * * *' # Run the cron job on every 5 minutes
+    workflow_dispatch:
 
 jobs:
   cronjob-workflow:
