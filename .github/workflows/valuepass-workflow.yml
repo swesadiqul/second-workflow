@@ -12,25 +12,18 @@ jobs:
   First-Job:
     runs-on: ubuntu-latest
 
-    outputs: # Define outputs for the job
+    outputs:
       greeting: ${{ steps.generate-greetings-messages.outputs.greeting }}
 
     steps:
-      - name: Generate Greeting Message
+      - name: Generate Greetings Messages
         id: generate-greetings-messages
-        run: |
-          echo "greeting=Hello, ${{ github.event.inputs.name }}!" >> $GITHUB_ENV
-
-      - name: Set Output from Environment File
-        id: set-output
-        run: |
-          echo "greeting=${{ steps.generate-greetings-messages.outputs.greeting }}" >> $GITHUB_ENV
+        run: echo "::set-output name=greeting::Hello, ${{ github.event.inputs.name }}!"
 
   Second-Job:
     needs: First-Job
     runs-on: ubuntu-latest
 
     steps:
-      - name: Use Greeting Message
-        run: |
-          echo "Greeting Received: ${{ needs.First-Job.outputs.greeting }}"
+      - name: Use the Greeting Messages
+        run: echo "${{ needs.First-Job.outputs.greeting }}"
