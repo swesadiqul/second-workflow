@@ -1,0 +1,29 @@
+name: Multijobs Workflow
+
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    First-Job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print branch name
+              run: echo "Hello, This is first step"
+
+    Second-Job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print branch name
+              run: echo "Hello, This is second step"
+    
+    Third-Job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print branch name
+              run: echo "Hello, This is third step"
