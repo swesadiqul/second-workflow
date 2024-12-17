@@ -1,0 +1,28 @@
+name: Run Composite Workflow
+
+
+on:
+    workflow_dispatch:
+        inputs:
+            name:
+                description: 'Enter your name:'
+                required: false
+
+jobs:
+    composite_action:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout the repository
+              uses: actions/checkout@v2
+
+            - name: Run Composite Action
+              id: greet
+              uses: ./
+              with:
+                name: ${{ github.event.inputs.name }}
+
+
+            - name: Display Greeting Messages
+              run: |
+                echo "Hello, ${{ steps.greet.outputs.message }}!"

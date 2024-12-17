@@ -6,7 +6,7 @@ on:
 
 jobs:
   call-reusable-workflow:
-    uses: ./.github/workflows/reusable-workflow.yml # Local path to reusable workflow
+    uses: swesadiqul/second-workflow/.github/workflows/reusable-workflow.yml # Local path to reusable workflow
 
 
 
