@@ -2,27 +2,16 @@
 name: Reusable Workflow
 
 on:
-  workflow_call:
-    inputs:
-      python-version:
-        description: "Python version to use"
-        required: true
-        type: string
+  workflow_call: # এটা অত্যাবশ্যক, caller workflow-কে enable করে
 
 jobs:
   example:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Log Message
+        run: echo "This is a reusable workflow!"
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ inputs.python-version }}
 
-      - name: Log setup success
-        run: echo "Python version is ${{ inputs.python-version }}"
 
 
 

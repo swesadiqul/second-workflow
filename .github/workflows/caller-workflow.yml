@@ -2,10 +2,12 @@
 name: Caller Workflow
 
 on:
-  push:
+  push: # Trigger for this workflow
 
 jobs:
   call-reusable-workflow:
-    uses: swesadiqul/second-work/.github/workflows/reusable-workflow.yml@main
+    uses: ./.github/workflows/reusable-workflow.yml # Local path to reusable workflow
+
+
 
 
