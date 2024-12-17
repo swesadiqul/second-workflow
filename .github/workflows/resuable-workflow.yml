@@ -1,0 +1,31 @@
+# .github/workflows/reusable-wrokflow.yml
+name: Reusable Workflow
+
+on:
+  workflow_call:  # এটি এই workflow-কে অন্য workflow থেকে call করতে দেয়
+    inputs:  # Input প্যারামিটার সংজ্ঞা করা হচ্ছে
+      python-version:
+        description: "Python version to use"
+        required: true
+        type: string
+    outputs:  # Output সংজ্ঞা করা হচ্ছে
+      result:
+        description: "A custom output message"
+        value: ${{ jobs.example.outputs.message }}
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    outputs:
+      message: "Job completed successfully with Python ${{ inputs.python-version }}"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python ${{ inputs.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ inputs.python-version }}
+
+      - name: Run a simple task
+        run: echo "Running on Python version ${{ inputs.python-version }}"

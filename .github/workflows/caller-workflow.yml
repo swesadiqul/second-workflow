@@ -1,0 +1,19 @@
+# caller-workflow.yml
+name: Caller Workflow
+
+on: [push]
+
+jobs:
+  call-reusable-workflow:
+    uses: ./.github/workflows/reusable-workflow.yml
+    with:
+      python-version: "3.10"
+    outputs:
+      result: ${{ jobs.call-reusable-workflow.outputs.result }}
+
+  print-output:
+    runs-on: ubuntu-latest
+    needs: call-reusable-workflow
+    steps:
+      - name: Print output from reusable workflow
+        run: echo "Result: ${{ needs.call-reusable-workflow.outputs.result }}"
