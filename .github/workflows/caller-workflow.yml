@@ -1,11 +1,11 @@
 # .github/workflows/caller-workflow.yml
 name: Caller Workflow
 
-on: [push]
+on:
+  push:
 
 jobs:
   call-reusable-workflow:
-    uses: swesadiqul/second-workflow/.github/workflows/reusable-workflow.yml@main
-    with:
-      python-version: "3.10"
+    uses: swesadiqul/second-work/.github/workflows/reusable-workflow.yml@main
+
 

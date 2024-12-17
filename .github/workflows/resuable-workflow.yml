@@ -13,7 +13,7 @@ jobs:
   example:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Set up Python
@@ -21,8 +21,8 @@ jobs:
         with:
           python-version: ${{ inputs.python-version }}
 
-      - name: Log message
-        run: echo "Using Python ${{ inputs.python-version }}"
+      - name: Log setup success
+        run: echo "Python version is ${{ inputs.python-version }}"
 
 
 
